@@ -6,7 +6,7 @@ class home extends CI_Controller{
 	}
 
 	public function insert(){
-		//$data['insert']=false;
+		
 		if($this->input->post('insert')){
 
 			extract($_POST);
@@ -39,11 +39,11 @@ class home extends CI_Controller{
 			extract($_POST);
 			$data=array('Name'=>$name,'email'=>$email,'status'=>$status);
 			$this->load->model('dblib','lib');
-			$result=$this->lib->update($data);
+			$result=$this->lib->update($id,$data);
 
 			if($result){
 
-				$msg['msg']="data insert successfully";
+				$msg['msg']="data update successfully";
 				$this->load->view('update',$msg);
 			}
 			else{
@@ -55,6 +55,33 @@ class home extends CI_Controller{
 		else{
 
 			$this->load->view('update');
+
+		}
+	}
+
+
+	public function delete(){
+
+		if($this->input->post('delete')){
+
+			extract($_POST);
+			$this->load->model('dblib','lib');
+			$result=$this->lib->delete($id);
+
+			if($result){
+
+				$msg['msg']="data delete successfully";
+				$this->load->view('delete',$msg);
+			}
+			else{
+
+				$msg['msg']='Somthing wrong try later';
+				$this->load->view('delete',$msg);
+			}
+		}
+		else{
+
+			$this->load->view('delete');
 
 		}
 	}
