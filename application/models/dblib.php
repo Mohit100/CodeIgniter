@@ -42,5 +42,21 @@ class lib extends CI_Model{
 			return false;
 		}
 	}
+
+
+	function display($id){
+
+		$this->db->select();
+
+		$query = $this->db->get('persoanl');
+
+		if($query){
+
+			return $query;
+		}
+		else{
+			return false;
+		}
+	}
 }
 ?>
