@@ -1,10 +1,10 @@
 <?php
 
-class lib extends CI_Model{
+class dblib extends CI_Model{
 
 	function insert($data){
 
-		$result=$this->db->insert('personal',$data);
+		$result=$this->db->insert('friend',$data);
 
 		if($result){
 			return true;
