@@ -17,7 +17,7 @@ class dblib extends CI_Model{
 	function update($id,$data){
 
 		
-		$result=$this->db->update('personal',$data,array('id' => $id));
+		$result=$this->db->update('friend',$data,array('id' => $id));
 
 		if($result){
 
@@ -31,9 +31,9 @@ class dblib extends CI_Model{
 
 	function delete($id){
 
-		$result=$this->db->delete(array('id'=>$id));
+		$result=$this->db->delete('friend',array('id'=>$id));		
 
-		if($result){
+		if($this->db->affected_rows()){
 
 			return true;
 		}
@@ -48,9 +48,9 @@ class dblib extends CI_Model{
 
 		$this->db->select();
 
-		$query = $this->db->get('persoanl');
+		$query = $this->db->get('friend');
 
-		if($query){
+		if($query->num_rows()>0){
 
 			return $query;
 		}
